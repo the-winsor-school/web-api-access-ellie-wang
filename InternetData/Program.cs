@@ -14,13 +14,14 @@ namespace InternetData
             Console.Write("How many quotes do you want?  ");
             int count = Convert.ToInt32(Console.ReadLine());
 
-            // Create an HTTP GET request for the API Endpoint.
+            // Create an HTTP GET request for the API Endpoint. (basically, get the URL)
             HttpRequestMessage request =
                 new HttpRequestMessage(HttpMethod.Get,
                 // This is the URL for the API endpoint, the last {0} is where you insert the number /count/ into the string.
                 string.Format("https://ron-swanson-quotes.herokuapp.com/v2/quotes/{0}", count));
+                //using {0}, #, take the value of count and put it onto the end of the string
 
-            // Use the HttpClient to send the request message to the remote server.
+            // Use the HttpClient to send the request message to the remote server (equivalent of pressing enter or go).
             // The result, is a Response message which contains the data you requested.
             HttpResponseMessage response = client.SendAsync(request).Result;
 
@@ -55,9 +56,11 @@ namespace InternetData
 
         public static void Main(string[] args)
         {
-            WeatherForcast forcast = Weather.GetWeatherForcast();
+            //WeatherForcast forcast = Weather.GetWeatherForcast();
 
-            Console.WriteLine(forcast.currently.summary);
+            GetRonSwansonQuotes();
+
+            //Console.WriteLine(forcast.currently.summary);
 
             Console.WriteLine("\nDone!");
         }
