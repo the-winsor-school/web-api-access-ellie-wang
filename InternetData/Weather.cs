@@ -36,17 +36,17 @@ namespace InternetData
     [DataContract]
     public class WeatherForcast
     {
-        [DataMember]
-        public double latitude;
+        [DataMember] //a decoration: DataMember is everything that comes from the API
+        public double latitude; //properties have to be public in C#: basically converting what's on the board (in notes)
 
         [DataMember]
         public double longitude;
 
-        [DataMember]
+        [DataMember (Name = "time-zone")] //have to write Name = "time-zone" because we want a dash
         public string timezone;
 
         [DataMember]
-        public ForecastData currently;
+        public ForecastData currently; //ForecastData written below
 
         [DataMember]
         public ForecastCollection minutely;
@@ -85,7 +85,7 @@ namespace InternetData
         [DataMember]
         public string uri;
 
-        [IgnoreDataMember]
+        [IgnoreDataMember] //take the time provided as long and turn it into a time that we can read
         public DateTime Time => new DateTime(time);
 
         [IgnoreDataMember]
